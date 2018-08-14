@@ -1,6 +1,8 @@
 package portal.shopping.portalshoppingproduct.service.repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +23,20 @@ public class ProductService {
 	
 	public Product getProductWithCategory(Long productId) {
 		return em.createNamedQuery("PRODUCT.findByIdWithCategory", Product.class).setParameter("id", productId).getSingleResult();
+	}
+	
+	public Product getProduct(Long productId) {
+		return productRepo.findById(productId).map(pr->{
+			pr.setCategories(new ArrayList<>());
+			return pr;
+		}).orElse(null);
+	}
+	
+	public List<Product> getProductsByCategory(Long categoryId) {
+		return productRepo.findByCategoriesId(categoryId).stream().map(pr->{
+			pr.setCategories(new ArrayList<>());
+			return pr;
+		}).collect(Collectors.toList());
 	}
 	
 	public List<Product> getAllProductWithCategory(){
