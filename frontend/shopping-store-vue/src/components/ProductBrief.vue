@@ -1,59 +1,44 @@
 <template>
-  <div class="product">
-    <img :src="thumbnail">
-    <product-brief></product-brief>
+  <div class="product-brief">
+    <div class="description">
+      THis product's price is collected from many websites such as LAZADA, SHOPEE, TIKI
+      </div>
+    <div class="price">
+      <div class="discount-price">480,000</div>
+      <div class="origin-price">320,000</div>
+  </div>
   </div>
 </template>
 
 <script>
-import ProductBrief from "./ProductBrief";
-export default {
-  components: {
-    ProductBrief
-  },
-  props: ["thumbnail"],
-  data: function() {
-    return {
-      isExpand: false
-    };
-  }
-};
+export default {};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.product {
-  position: relative;
-  width: 27%;
-  height: 27%;
-  padding: 1px;
-  display: inline-block;
-  border: 1px solid #dad7d7;
-  border-radius: 5px;
-  margin: 7px;
+.product-brief {
+  background-color: #e1d2cc;
 }
 
-.promotion {
-  position: relative;
-  height: 30px;
-  margin-left: -9%;
-  margin-top: -10%;
-  margin-right: -9%;
+.description {
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+  white-space: initial;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: left;
+  padding: 5px;
 }
-
-.promotion img {
-  width: 30px;
-  height: 30px;
-}
-
 .price {
   position: relative;
   height: 30px;
-  background-color: coral;
 }
 
 .price div {
   width: 50%;
+  line-height: 18px;
+  vertical-align: middle;
 }
 
 .origin-price {
@@ -64,6 +49,8 @@ export default {
   height: 100%;
   padding-top: 5px;
   padding-left: 5px;
+  color: #f57224;
+  font-size: 20px;
 }
 
 .discount-price {
@@ -74,6 +61,10 @@ export default {
   height: 100%;
   padding-top: 5px;
   padding-right: 5px;
+  font-size: 17px;
+  color: #a2a2a2;
+  text-decoration: line-through;
+  font-weight: 300;
 }
 
 .trend {
@@ -103,7 +94,7 @@ export default {
   -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   display: block;
-  margin: 0 auto 0.4em;
+  margin: 0 auto 1em;
 }
 img {
   max-width: 100%;
