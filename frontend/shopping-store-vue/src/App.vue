@@ -41,7 +41,7 @@ export default {
 }
 
 .page {
-  padding-left: 22%;
+  padding-left: 25%;
 }
 
 .product-list {

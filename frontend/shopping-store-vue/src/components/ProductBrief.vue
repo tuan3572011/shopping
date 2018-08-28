@@ -1,17 +1,19 @@
 <template>
   <div class="product-brief">
     <div class="description">
-      THis product's price is collected from many websites such as LAZADA, SHOPEE, TIKI
+      {{description}}
       </div>
     <div class="price">
-      <div class="discount-price">480,000</div>
-      <div class="origin-price">320,000</div>
+      <div class="discount-price">{{discountPrice}}</div>
+      <div class="origin-price">{{regularPrice}}</div>
   </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["description","discountPrice","regularPrice"]
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -41,7 +43,7 @@ export default {};
   vertical-align: middle;
 }
 
-.origin-price {
+.discount-price {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -53,7 +55,7 @@ export default {};
   font-size: 20px;
 }
 
-.discount-price {
+.origin-price {
   position: absolute;
   bottom: 0;
   right: 0;

@@ -1,6 +1,6 @@
 <template>
 <article class="content">
-          <Product v-for="index in 100" :key="index" :thumbnail="thumbnail"></Product>
+          <Product v-for="index in 100" :key="index" :product="product"></Product>
     </article>
 </template>
 
@@ -12,7 +12,12 @@ export default {
   },
   data: function() {
     return {
-      thumbnail: require("../assets/img/f-watson.jpg"),
+      product: {
+        thumbnail: require("../assets/img/f-watson.jpg"),
+        description: "This product data is collected from Lazada, Tiki, Shopee and Sendo",
+        discountPrice: 32000,
+        regularPrice: 40000
+      }
     }
   }
 };

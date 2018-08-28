@@ -1,7 +1,7 @@
 <template>
-  <div class="product">
-    <img :src="thumbnail">
-    <product-brief></product-brief>
+  <div class="product" v-on:click="viewDetail">
+    <img :src="product.thumbnail">
+    <ProductBrief :description="product.description" :discountPrice="product.discountPrice" :regularPrice="product.regularPrice"></ProductBrief>
   </div>
 </template>
 
@@ -11,11 +11,11 @@ export default {
   components: {
     ProductBrief
   },
-  props: ["thumbnail"],
-  data: function() {
-    return {
-      isExpand: false
-    };
+  props: ["product"],
+  methods:{
+    viewDetail: function(){
+      alert(this.product.description);
+    }
   }
 };
 </script>
@@ -24,13 +24,22 @@ export default {
 <style scoped>
 .product {
   position: relative;
-  width: 27%;
+  width: 18%;
   height: 27%;
   padding: 1px;
   display: inline-block;
-  border: 1px solid #dad7d7;
   border-radius: 5px;
   margin: 7px;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.product:hover{
+  cursor: pointer;
+  /* border: 0px solid #dad7d7; */
+  box-shadow: inset 0 0 0 1px #3a7999;
+  border-radius: 0px;
 }
 
 .promotion {
@@ -99,9 +108,6 @@ export default {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   display: block;
   margin: 0 auto 0.4em;
 }
